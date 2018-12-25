@@ -17,9 +17,9 @@
                     User Name
                 </div>
                 <div class="login-button-block">
-                    <div class="login-button" onclick="signup()">
-                        Logout
-                    </div>
+                        <form action="signout" method="get">
+                              <p id="logout"><input type="submit" class="login-button" value="Logout"></p>
+                        </form>
                 </div>
             </div>
             <div class="nav-right">

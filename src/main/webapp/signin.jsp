@@ -15,16 +15,15 @@
             <h2 class="signup-title">Авторизация</h2>
             <hr class="signup-hr">
         </div>
-        <div class="signup-container">
-            <input type=search class="placeholder" id="login" placeholder="Логин" onkeyup="tape('login')">
-            <input type=search class="placeholder" id="pass" placeholder="Пароль" onkeyup="tape('pass')">
+        <div class="signup-container" action="signin" method="post">
+            <form action="signin" method="post">
+              <p><input class="placeholder" id="login" placeholder="Логин" type="login" name="login"></p>
+              <p><input class="placeholder" id="pass" placeholder="Пароль"type="password" name="password"></p>
+              <p><input type="submit" class="signup-button" value="Отправить"></p>
+             </form>
+
             <div class="alert-info">
 
-            </div>
-            <div class="signup-button" onclick="validation(false);">
-                <div class="highlight">
-                    Вход
-                </div>
             </div>
             <div class="info">
                 <p><a class="ex1" href="signin.html">Зарегистрироваться</a></p>

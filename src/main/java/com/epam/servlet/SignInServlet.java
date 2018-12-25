@@ -1,5 +1,8 @@
 package com.epam.servlet;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,23 +13,28 @@ import java.io.IOException;
 
 @WebServlet("/signin")
 public class SignInServlet extends HttpServlet {
+    private static final Logger logger = LoggerFactory.getLogger(SignInServlet.class);
     private static final String LOGIN = "leonid";
     private static final String PASS = "leonid";
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
+        logger.debug("Started doGet");
         request.getRequestDispatcher("signin.jsp").forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        logger.debug("Started doPOST");
         request.setCharacterEncoding("UTF-8");
         String login = request.getParameter("login");
         String pass = request.getParameter("password");
 
         if (login.equals(LOGIN) && pass.equals(PASS)) {
             setAttributes(request);
-            response.sendRedirect("index");
+//            request.getRequestDispatcher("index.jsp").include(request, response);
+            response.sendRedirect (request.getContextPath() + "/index");
         }
     }
 

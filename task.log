@@ -1,0 +1,6 @@
+16:16:48.550 [http-bio-8080-exec-1] DEBUG c.e.s.MainPageServlet - Started doGet
+16:16:48.557 [http-bio-8080-exec-1] DEBUG c.e.s.MainPageServlet - doget sendRedirect to /signin
+16:16:48.563 [http-bio-8080-exec-3] DEBUG c.e.s.SignInServlet - Started doGet
+16:16:55.737 [http-bio-8080-exec-4] DEBUG c.e.s.SignInServlet - Started doPOST
+16:16:55.741 [http-bio-8080-exec-5] DEBUG c.e.s.MainPageServlet - Started doGet
+16:16:55.742 [http-bio-8080-exec-5] DEBUG c.e.s.MainPageServlet - doget forward to index.jsp

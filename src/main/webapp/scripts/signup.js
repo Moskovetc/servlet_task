@@ -8,15 +8,24 @@ function sendPostSignInPage() {
     var xhr = new XMLHttpRequest();
     var body = 'login=' + encodeURIComponent(login) +
         '&password=' + encodeURIComponent(password);
-    xhr.open("POST", 'signin', true);
+    xhr.open('POST', 'signin', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     console.log(body);
     xhr.send(body);
+}
 
+function getLogin() {
+    return login;
+}
+
+function getPassword() {
+    return password;
 }
 
 function signup() {
-    window.location.replace('signup.html');
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'signout');
+    xhr.send();
 }
 
 function tape(id) {
@@ -77,7 +86,7 @@ function validation(isSignUpPage) {
     if (check && isSignUpPage) {
         window.location.replace('index.html');
     } if (check && !isSignUpPage) {
-        sendPostSignInPage();
+//        return login, password;
     } 
     else {
         var element = document.getElementsByClassName('alert-info')[0];
