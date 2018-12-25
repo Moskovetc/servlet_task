@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="cc" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 
@@ -9,13 +11,14 @@
     <link href="style.css" rel="stylesheet">
 </head>
 
-<body style onload="appendProducts(); setDiscount(); setUserName();">
+<body style onload="setDiscount();">
     <div class="fixed-position">
         <div class="navigation-row-container">
             <div class="nav-left">
-                <div class="username-block">
-                    User Name
-                </div>
+                <span class="username-block">
+                    <%=(String)session.getAttribute("firstName")%>
+                    <%=(String)session.getAttribute("lastName")%>
+                </span>
                 <div class="login-button-block">
                         <form action="signout" method="get">
                               <p id="logout"><input type="submit" class="login-button" value="Logout"></p>
@@ -36,22 +39,31 @@
             </div>
         </div>
     </div>
+    <cc:forEach items="${categories}" var="cat">
     <div class="category">
         <div class="category-title-block">
-            <h2 class="category-title">Smartphones</h2>
+            <h2 class="category-title">${cat.name}</h2>
             <hr class="category-hr">
         </div>
-        <div class="products-container" id="smtphns">
+        <div class="products-container">
+            <cc:forEach items="${cat.products}" var="product" varStatus="status">
+                <div class="product-container-onclick" id=${product.id}>
+                    <div class="image">
+                        <img src=${product.imgSrc}>
+                    </div>
+                    <div class="product-name">
+                        ${product.brand} ${product.model}
+                    </div>
+                    <div class="price">${product.price} руб.</div>
+                    <div class="basket-button">В корзину!</div>
+                    <div class="close-button">
+                        <span class="close">×</span>
+                    </div>
+                </div>
+            </cc:forEach>
         </div>
     </div>
-    <div class="category">
-        <div class="category-title-block">
-            <h2 class="category-title">Headphones</h2>
-            <hr class="category-hr">
-        </div>
-        <div class="products-container" id="hdphns">
-        </div>
-    </div>
+    </cc:forEach>
     <div id="basket-modal" class="modal">
         <div class="basket-content-container">
             <div class="modal-content">

@@ -15,6 +15,15 @@ function appendProducts() {
     }
 }
 
+function sendPost() {
+    var xhr = new XMLHttpRequest();
+    var body = 'products=get';
+    xhr.open('POST', 'index', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    console.log(body);
+    xhr.send(body);
+}
+
 function createProduct(name, imgSrc, id) {
     product = document.createElement('div');
     product.classList = 'product-container-onclick';

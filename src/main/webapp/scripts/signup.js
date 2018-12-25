@@ -6,7 +6,7 @@ var retryPassword;
 
 function sendPostSignInPage() {
     var xhr = new XMLHttpRequest();
-    var body = 'login=' + encodeURIComponent(login) +
+    var body = 'products=' + encodeURIComponent(login) +
         '&password=' + encodeURIComponent(password);
     xhr.open('POST', 'signin', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

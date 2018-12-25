@@ -25,16 +25,20 @@ public class SignInServlet extends HttpServlet {
     }
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         logger.debug("Started doPOST");
         request.setCharacterEncoding("UTF-8");
         String login = request.getParameter("login");
         String pass = request.getParameter("password");
 
         if (login.equals(LOGIN) && pass.equals(PASS)) {
-            setAttributes(request);
-//            request.getRequestDispatcher("index.jsp").include(request, response);
-            response.sendRedirect (request.getContextPath() + "/index");
+//            setAttributes(request);
+            HttpSession session = request.getSession(true);
+            session.setAttribute("login", LOGIN);
+            session.setAttribute("password", PASS);
+            session.setAttribute("firstName", "Leonid");
+            session.setAttribute("lastName", "Moskovets");
+            response.sendRedirect ("index");
         }
     }
 
